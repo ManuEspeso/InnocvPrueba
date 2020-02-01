@@ -31,10 +31,10 @@ class UsersViewCell: UITableViewCell {
         userName.text = name
     }
     
-    private func update(birthdate: Date?) {
-        guard let birthdate = birthdate?.toFormattedString(with: "YYYY") else {
+    private func update(birthdate: String?) {
+        /*guard let birthdate = birthdate?.toFormattedString(with: "YYYY") else {
             return
-        }
+        }*/
         userBirthdate.text = birthdate
     }
     
@@ -42,6 +42,6 @@ class UsersViewCell: UITableViewCell {
                 
         update(id: user?.id )
         update(name: user?.name)
-        //update(birthdate: user?.birthdate)
+        update(birthdate: user?.birthdate)
     }
 }

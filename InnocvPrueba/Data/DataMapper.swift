@@ -10,48 +10,41 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class DataMapper {
+class DataMapper: UIViewController {
     
     typealias DataMapperCompletion = (_ result: Any?, _ error: Error?) -> Void
     
-    let locale = "es"
-    let timestamp = NSDate().timeIntervalSince1970
     var connection: RestManager = Connection()
     
     func checkHttpStatus(httpCode: Int) -> Bool{
-        
         switch httpCode {
-            
         case 200..<299:
             return true
         case 401:
-            print("unauthorized")
+            self.showAlert(alertText: "Something Wrong", alertMessage: "unauthorized")
             return false
         case 403:
-            print("forbidden")
+            self.showAlert(alertText: "Something Wrong", alertMessage: "forbidden")
             return false
         case 404:
-            print("not_found_error")
+            self.showAlert(alertText: "Something Wrong", alertMessage: "not_found_error")
             return false
         case 500...503:
-            print("not_found_error")
-            return false
-        case 0:
-            print("ERROR")
+            self.showAlert(alertText: "Something Wrong", alertMessage: "network_down")
             return false
         default:
-            print("*** ERROR POR DEFECTO")
             return false
         }
-        
+    }
+    
+    func checkInternet() -> Bool {
+        let conexion = connection.isInternetAvailable()
+        return conexion
     }
     
     func getUser(userId: Int, completion: @escaping DataMapperCompletion) {
-        
-        let url = "/User/\(userId)"
-        
-        connection.get(url, params: ["id":userId], encode: URLEncoding.default) {
-            httpStatus, json, responseHeaders, error in
+        connection.get("/User/\(userId)", params: ["id": userId], encode: URLEncoding.default) {
+            httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
                 if let item = User(jsonData: try? json.rawData()) {
                     completion(item, nil)
@@ -65,62 +58,47 @@ class DataMapper {
     }
     
     func getAllUsers(completion: @escaping DataMapperCompletion) {
-        let url = "/User/"
-        
-        connection.get(url, params:nil, encode: URLEncoding.default) {
-            httpStatus, json, responseHeaders, error in
+        connection.get("/User/", params:nil, encode: URLEncoding.default) {
+            httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
                 let items = json.arrayValue.compactMap {
                     return User(jsonData: try? $0.rawData())
                 }
                 completion(items, nil)
             } else {
-                
                 completion(nil, error)
             }
         }
     }
     
     func createUser(user: User, completion: @escaping DataMapperCompletion) {
-        let url = "/User/"
-        
-        connection.post(url, params:user.params, encode: JSONEncoding.default) {
-            httpStatus, json, responseHeaders, error in
+        connection.post(params:user.params, encode: JSONEncoding.default) {
+            httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus) {
-                
                 completion(nil, nil)
             } else {
-                
                 completion(nil, error)
             }
         }
     }
     
     func updateUser(user: User,completion: @escaping DataMapperCompletion) {
-        let url = "/User/"
-        
-        connection.put(url, params: user.params, encode: JSONEncoding.default) {
-            httpStatus, json, responseHeaders, error in
+        connection.put(params: user.params, encode: JSONEncoding.default) {
+            httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus) {
-                
                 completion(nil, nil)
             } else {
-                
                 completion(nil, error)
             }
         }
     }
     
     func deleteUser(userId: Int, completion: @escaping DataMapperCompletion) {
-        let url = "/User/\(userId)"
-        
-        connection.delete(url, params: nil, encode: URLEncoding.default) {
-            httpStatus, json, responseHeaders, error in
+        connection.delete("/User/\(userId)", params: nil, encode: URLEncoding.default) {
+            httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus) {
-                
                 completion(nil, nil)
             }else {
-                
                 completion(nil, error)
             }
         }

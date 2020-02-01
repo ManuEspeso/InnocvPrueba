@@ -8,12 +8,14 @@
 
 import Foundation
 
-struct User: Mappable {
+protocol Mapping: Codable {
+    init?(jsonData: Data?)
+}
+
+struct User: Mapping {
     var id: Int? = 0
     var name: String? = ""
     var birthdate: String? = ""
-   
-    
     init(id: Int?, name: String?, birthdate: String?) {
         self.id = id
         self.name = name

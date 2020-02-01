@@ -32,34 +32,33 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0YQ-pW-1zU">
                                                             <rect key="frame" x="4" y="8" width="335" height="103"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urP-yi-8nj">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="23"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="23" id="BUd-Sy-JkX"/>
-                                                                    </constraints>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urP-yi-8nj">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="24.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-hR-z2p">
-                                                                    <rect key="frame" x="0.0" y="42" width="335" height="23"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="23" id="pxr-Sy-1X5"/>
-                                                                    </constraints>
+                                                                    <rect key="frame" x="0.0" y="43.333333333333336" width="335" height="20.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2Y-Ga-YpC">
-                                                                    <rect key="frame" x="0.0" y="84" width="335" height="19"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="23" id="qa3-qs-4b0"/>
-                                                                    </constraints>
+                                                                    <rect key="frame" x="0.0" y="82.666666666666671" width="335" height="20.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="d2Y-Ga-YpC" firstAttribute="leading" secondItem="0YQ-pW-1zU" secondAttribute="leading" id="5bh-F9-HSD"/>
+                                                                <constraint firstItem="urP-yi-8nj" firstAttribute="leading" secondItem="0YQ-pW-1zU" secondAttribute="leading" id="O6g-ae-ABm"/>
+                                                                <constraint firstItem="7Qo-hR-z2p" firstAttribute="leading" secondItem="0YQ-pW-1zU" secondAttribute="leading" id="Wd3-9G-8ft"/>
+                                                                <constraint firstItem="urP-yi-8nj" firstAttribute="top" secondItem="0YQ-pW-1zU" secondAttribute="top" id="bpF-bk-LPO"/>
+                                                                <constraint firstItem="7Qo-hR-z2p" firstAttribute="top" secondItem="urP-yi-8nj" secondAttribute="bottom" constant="19" id="dek-h0-EXr"/>
+                                                                <constraint firstItem="d2Y-Ga-YpC" firstAttribute="top" secondItem="7Qo-hR-z2p" secondAttribute="bottom" constant="19" id="rgc-n1-lpg"/>
+                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

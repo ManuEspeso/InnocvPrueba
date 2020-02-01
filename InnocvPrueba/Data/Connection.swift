@@ -10,17 +10,18 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SystemConfiguration
 
 typealias ConnectionCompletion = (_ httpStatus: Int, _ response: JSON?, _ responseHeaders: [AnyHashable: Any], _ error: Error?) -> Void
-typealias ConnectionPdf = (_ httpStatus: Int, _ response: Data?, _ responseHeaders: [AnyHashable: Any], _ error: Error?) -> Void
 
 protocol RestManager {
     var httpHeaders: HTTPHeaders? { get set }
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
-    func put(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    func put(params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     func delete(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
-    func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
+    func post(params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
+    func isInternetAvailable() -> Bool
 }
 
 class Connection: RestManager {
@@ -60,26 +61,41 @@ class Connection: RestManager {
         return baseUrlString + endpoint
     }
     
-    
     func delete(_ endpoint: String, params: [String: Any]?, encode :ParameterEncoding = URLEncoding.default, completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .delete, params: params, encode: encode, completion: completion)
     }
     
-    func isConnectedToInternet() -> Bool {
-        return NetworkReachabilityManager()?.isReachable ?? false
-    }
-    
-    func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
-        connect(to: completeUrlString(forEndpoint: endpoint), method: .post, params: params, encode: encode,  completion: completion)
+    func post(params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
+        connect(to: completeUrlString(forEndpoint: "/User/"), method: .post, params: params, encode: encode,  completion: completion)
     }
     
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .get, params: params, encode: encode,  completion: completion)
     }
     
-    func put(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
-        connect(to: completeUrlString(forEndpoint: endpoint), method: .put, params: params, encode: encode,  completion: completion)
+    func put(params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
+        connect(to: completeUrlString(forEndpoint: "/User/"), method: .put, params: params, encode: encode,  completion: completion)
     }
     
-    
+    func isInternetAvailable() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        return (isReachable && !needsConnection)
+    }
 }
+
+

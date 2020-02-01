@@ -9,11 +9,15 @@
 
 import UIKit
 
-class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol UsersListView: class {
+    func loadData()
+}
+
+class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UsersListView {
     
     @IBOutlet weak var mTableView: UITableView!
     
-    //var presenter: UsersListPresenter!
+    var presenter = UsersListPresenterDefault()
     var users: [User] = []
     let dataMapper = DataMapper()
     
@@ -23,28 +27,21 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         mTableView.delegate = self
         mTableView.dataSource = self
         
+        presenter.onViewdidLoad(view: self)
+        
         navigationItem.title = "Users"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewUser))
     }
     override func viewWillAppear(_ animated: Bool) {
-        getUsersFromApiRequest()
+        presenter.viewWillAppear()
     }
     
-    func getUsersFromApiRequest() {
-        dataMapper.getAllUsers(){
-            result, error in
-            if error != nil {
-                //enseñar alerta aqui
-            }
-            if let result = result as? [User] {
-                self.users = result
-                self.mTableView.reloadData()
-            }
-        }
+    func loadData() {
+        self.mTableView.reloadData()
     }
     
     @objc func addNewUser() {
-        
+        presenter.addUserButtonTap()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -52,24 +49,29 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return presenter.numberOfUsers
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsersViewCell", for: indexPath)
+        let user = presenter.user(for: indexPath.section, at: indexPath.row)
         
-        (cell as? UsersViewCell)?.update(data: users[indexPath.row])
+        (cell as? UsersViewCell)?.update(data: user)
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 5
         cell.layer.borderWidth = 2
         cell.layer.shadowOffset = CGSize(width: -1, height: 1)
         
-        /*let formatter = DateFormatter()
-         formatter.locale = Locale.current
-         formatter.dateStyle = .medium*/
-        //cell.detailTextLabel?.text = formatter.string(from: user.birthdate)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.selectUser(for: indexPath.section, at: indexPath.row)
     }
 }
 
