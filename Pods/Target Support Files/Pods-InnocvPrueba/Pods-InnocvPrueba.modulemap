@@ -1,0 +1,6 @@
+framework module Pods_InnocvPrueba {
+  umbrella header "Pods-InnocvPrueba-umbrella.h"
+
+  export *
+  module * { export * }
+}

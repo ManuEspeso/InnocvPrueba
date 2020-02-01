@@ -21,9 +21,9 @@ class UsersViewCell: UITableViewCell {
         userBirthdate.text = nil
     }
     
-    private func update(id: String?) {
-        
-        userID.text = id
+    private func update(id: Int?) {
+        guard let safeID = id else { return }
+        userID.text = "\(safeID)"
     }
     
     private func update(name: String?) {
@@ -38,10 +38,10 @@ class UsersViewCell: UITableViewCell {
         userBirthdate.text = birthdate
     }
     
-    func update(data user: String) {
+    func update(data user: User?) {
                 
-        update(id: user)
-        update(name: user)
-        update(birthdate: Calendar.current.date(from: DateComponents(year: 2020)))
+        update(id: user?.id )
+        update(name: user?.name)
+        //update(birthdate: user?.birthdate)
     }
 }

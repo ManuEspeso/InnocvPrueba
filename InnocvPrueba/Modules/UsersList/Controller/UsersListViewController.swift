@@ -14,6 +14,8 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var mTableView: UITableView!
     
     //var presenter: UsersListPresenter!
+    var users: [User] = []
+    let dataMapper = DataMapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,22 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         
         navigationItem.title = "Users"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewUser))
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getUsersFromApiRequest()
+    }
+    
+    func getUsersFromApiRequest() {
+        dataMapper.getAllUsers(){
+            result, error in
+            if error != nil {
+                //enseñar alerta aqui
+            }
+            if let result = result as? [User] {
+                self.users = result
+                self.mTableView.reloadData()
+            }
+        }
     }
     
     @objc func addNewUser() {
@@ -34,17 +52,14 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsersViewCell", for: indexPath)
         
-        //let user = presenter.user(for: indexPath.section, at: indexPath.row)
-        //cell.textLabel?.text = user.name
-        
-        (cell as? UsersViewCell)?.update(data: "hola")
+        (cell as? UsersViewCell)?.update(data: users[indexPath.row])
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 5
         cell.layer.borderWidth = 2
@@ -54,7 +69,6 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
          formatter.locale = Locale.current
          formatter.dateStyle = .medium*/
         //cell.detailTextLabel?.text = formatter.string(from: user.birthdate)
-        
         return cell
     }
 }

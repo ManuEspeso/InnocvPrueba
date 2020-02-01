@@ -8,21 +8,22 @@
 
 import Foundation
 
-struct User {
-    let id: Int?
-    var name: String?
-    var birthdate = Date()
+struct User: Mappable {
+    var id: Int? = 0
+    var name: String? = ""
+    var birthdate: String? = ""
+   
     
-    /*private let dateFormatter: DateFormatter = {
-     let formatter = DateFormatter()
-     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-     
-     return formatter
-     }()*/
-    
-    init(id: Int, name: String, birthdate: Date) {
+    init(id: Int?, name: String?, birthdate: String?) {
         self.id = id
         self.name = name
         self.birthdate = birthdate
+    }
+    
+    var params: [String: Any] {
+        return ["name":name ?? "nil",
+                "birthdate": birthdate ?? "nil",
+                "id":id ?? 0
+        ]
     }
 }
