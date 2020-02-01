@@ -16,6 +16,17 @@ struct User: Mapping {
     var id: Int? = 0
     var name: String? = ""
     var birthdate: String? = ""
+    var birthdateFormatted: String {
+        if let dateString = self.birthdate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-ddEhh:mm:ss"
+            let dateObj = dateFormatter.date(from: dateString)
+            if dateObj == nil { return "unknoun"}
+            return dateFormatter.string(from: dateObj!)
+        }
+        return "unknow"
+    }
+    
     init(id: Int?, name: String?, birthdate: String?) {
         self.id = id
         self.name = name

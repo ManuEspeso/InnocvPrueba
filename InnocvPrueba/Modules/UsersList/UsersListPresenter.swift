@@ -13,8 +13,8 @@ protocol UsersListPresenter {
     var numberOfUsers: Int { get }
     func viewWillAppear()
     func addUserButtonTap()
-    func user(for section: Int, at index: Int) -> User
-    func selectUser(for section: Int, at index: Int)
+    func user(at index: Int) -> User
+    func selectUser(at index: Int)
 }
 
 class UsersListPresenterDefault: UIViewController, UsersListPresenter {
@@ -53,14 +53,14 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
         print("boton mas pulsado")
     }
     
-    func user(for section: Int, at index: Int) -> User {
+    func user(at index: Int) -> User {
         return users[index]
     }
     
-    func selectUser(for section: Int, at index: Int) {
+    func selectUser(at index: Int) {
         let user = users[index]
-        print(user)
-        dataMapper.getUser(userId: user.id!) {result, error in
+        self.usersView.goToUsersDetailPage(userSelected: user)
+        /*dataMapper.getUser(userId: user.id!) {result, error in
             print("entro")
             if error != nil {
                 self.showAlert(alertText: "Something Wrong", alertMessage: error as! String)
@@ -71,7 +71,6 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
                 print(self.userDetail)
                 //self.usersView.loadData()
             }
-        }
-        print("no entro")
+        }*/
     }
 }

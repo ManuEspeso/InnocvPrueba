@@ -43,3 +43,15 @@ extension Mapping {
         }
     }
 }
+
+extension String {
+    
+    func toLocalized() -> String {
+        return NSLocalizedString(self,
+                                 comment:"")
+    }
+}
+
+let something_wrong = "message_principal_error"
+let message_retired = "message_retired"
+

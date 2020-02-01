@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35EA011C549E2037F968D663 /* Pods_InnocvPrueba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA7E857139321D976EC2B90 /* Pods_InnocvPrueba.framework */; };
 		7360CAD954CAB4938BBA56BB /* Pods_InnocvPruebaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7363CBD1BC5449A41BA9B4E1 /* Pods_InnocvPruebaTests.framework */; };
+		DD095DA423E5D048009AFACB /* UsersListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD095DA323E5D048009AFACB /* UsersListDetailViewController.swift */; };
 		DDA44DAE23E509AA009D72D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA44DAD23E509AA009D72D2 /* AppDelegate.swift */; };
 		DDA44DB023E509AA009D72D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA44DAF23E509AA009D72D2 /* SceneDelegate.swift */; };
 		DDA44DB223E509AA009D72D2 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA44DB123E509AA009D72D2 /* UsersListViewController.swift */; };
@@ -51,6 +52,7 @@
 		85058FD54A27CE01E449DA72 /* Pods-InnocvPrueba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocvPrueba.release.xcconfig"; path = "Target Support Files/Pods-InnocvPrueba/Pods-InnocvPrueba.release.xcconfig"; sourceTree = "<group>"; };
 		89EC64EB691535ED698BDDEC /* Pods-InnocvPruebaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocvPruebaUITests.release.xcconfig"; path = "Target Support Files/Pods-InnocvPruebaUITests/Pods-InnocvPruebaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		964DA9659AB2FFBB7DE1A8A3 /* Pods-InnocvPruebaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocvPruebaUITests.debug.xcconfig"; path = "Target Support Files/Pods-InnocvPruebaUITests/Pods-InnocvPruebaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD095DA323E5D048009AFACB /* UsersListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListDetailViewController.swift; sourceTree = "<group>"; };
 		DDA44DAA23E509AA009D72D2 /* InnocvPrueba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InnocvPrueba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA44DAD23E509AA009D72D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDA44DAF23E509AA009D72D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA44DB123E509AA009D72D2 /* UsersListViewController.swift */,
+				DD095DA323E5D048009AFACB /* UsersListDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD095DA423E5D048009AFACB /* UsersListDetailViewController.swift in Sources */,
 				DDA44DEA23E50BCE009D72D2 /* Extensions.swift in Sources */,
 				DDA44DB223E509AA009D72D2 /* UsersListViewController.swift in Sources */,
 				DDA44DEF23E50DF8009D72D2 /* DataMapper.swift in Sources */,

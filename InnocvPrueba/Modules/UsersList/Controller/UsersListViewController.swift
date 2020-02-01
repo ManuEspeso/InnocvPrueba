@@ -11,6 +11,7 @@ import UIKit
 
 protocol UsersListView: class {
     func loadData()
+    func goToUsersDetailPage(userSelected: User)
 }
 
 class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UsersListView {
@@ -18,8 +19,6 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var mTableView: UITableView!
     
     var presenter = UsersListPresenterDefault()
-    var users: [User] = []
-    let dataMapper = DataMapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,23 +54,34 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsersViewCell", for: indexPath)
-        let user = presenter.user(for: indexPath.section, at: indexPath.row)
+        let user = presenter.user(at: indexPath.row)
         
         (cell as? UsersViewCell)?.update(data: user)
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 2
-        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        let view = UIView()
+        view.frame = cell.contentView.bounds.insetBy(dx: 4 , dy: 4)
+        view.layer.borderWidth = 2
+        view.layer.cornerRadius = 5
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.5
+        view.layer.borderColor = UIColor(red: 0, green: 0.3, blue: 0.4, alpha: 1).cgColor
+        cell.contentView.addSubview(view)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.selectUser(at: indexPath.row)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.selectUser(for: indexPath.section, at: indexPath.row)
+    func goToUsersDetailPage(userSelected: User) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "UsersListDetailViewController") as? UsersListDetailViewController {
+            
+            controller.modalTransitionStyle = .flipHorizontal
+            controller.modalPresentationStyle = .popover
+            
+            controller.set(data: userSelected)
+            
+            present(controller, animated: true, completion: nil)
+        }
     }
 }
-

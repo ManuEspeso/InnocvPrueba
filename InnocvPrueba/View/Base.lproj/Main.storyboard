@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-Bold.ttf">
+            <string>Muli-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Users List View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -32,19 +37,19 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0YQ-pW-1zU">
                                                             <rect key="frame" x="4" y="8" width="335" height="103"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urP-yi-8nj">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urP-yi-8nj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="335" height="24.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-hR-z2p">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-hR-z2p">
                                                                     <rect key="frame" x="0.0" y="43.333333333333336" width="335" height="20.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2Y-Ga-YpC">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthdate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2Y-Ga-YpC">
                                                                     <rect key="frame" x="0.0" y="82.666666666666671" width="335" height="20.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -103,6 +108,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074.4000000000001" y="138.91625615763547"/>
+        </scene>
+        <!--Users List Detail View Controller-->
+        <scene sceneID="TfJ-Yu-iRa">
+            <objects>
+                <viewController storyboardIdentifier="UsersListDetailViewController" id="ihw-tl-CIV" customClass="UsersListDetailViewController" customModule="InnocvPrueba" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ybq-eX-i5R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96t-fe-pHs">
+                                <rect key="frame" x="177" y="194" width="21" height="25.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REO-x5-iS5">
+                                <rect key="frame" x="159.33333333333334" y="269.66666666666669" width="56.666666666666657" height="25"/>
+                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthdate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tq-X0-kzP">
+                                <rect key="frame" x="142" y="344.66666666666669" width="91" height="25.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="96t-fe-pHs" firstAttribute="top" secondItem="Z6X-wk-Jll" secondAttribute="top" constant="150" id="3tN-29-WU9"/>
+                            <constraint firstItem="96t-fe-pHs" firstAttribute="centerX" secondItem="Ybq-eX-i5R" secondAttribute="centerX" id="MVE-zp-Q4L"/>
+                            <constraint firstItem="4tq-X0-kzP" firstAttribute="top" secondItem="REO-x5-iS5" secondAttribute="bottom" constant="50" id="aua-rv-cpc"/>
+                            <constraint firstItem="4tq-X0-kzP" firstAttribute="centerX" secondItem="Ybq-eX-i5R" secondAttribute="centerX" id="fdQ-Ny-yQe"/>
+                            <constraint firstItem="REO-x5-iS5" firstAttribute="centerX" secondItem="Ybq-eX-i5R" secondAttribute="centerX" id="sfE-cX-VOk"/>
+                            <constraint firstItem="REO-x5-iS5" firstAttribute="top" secondItem="96t-fe-pHs" secondAttribute="bottom" constant="50" id="zos-Lz-XCR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z6X-wk-Jll"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Iux-JF-l8y"/>
+                    <connections>
+                        <outlet property="userBirthdate" destination="4tq-X0-kzP" id="kfS-9W-KOX"/>
+                        <outlet property="userID" destination="96t-fe-pHs" id="XfI-te-eOf"/>
+                        <outlet property="userName" destination="REO-x5-iS5" id="u8s-jx-sFI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKZ-MW-s0R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bcd-fN-lp4">
