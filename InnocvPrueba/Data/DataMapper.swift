@@ -21,16 +21,13 @@ class DataMapper: UIViewController {
         case 200..<299:
             return true
         case 401:
-            self.showAlert(alertText: "Something Wrong", alertMessage: "unauthorized")
-            return false
-        case 403:
-            self.showAlert(alertText: "Something Wrong", alertMessage: "forbidden")
+            self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: unauthorized.toLocalized())
             return false
         case 404:
-            self.showAlert(alertText: "Something Wrong", alertMessage: "not_found_error")
+            self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: not_found_error.toLocalized())
             return false
-        case 500...503:
-            self.showAlert(alertText: "Something Wrong", alertMessage: "network_down")
+        case 500:
+            self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: network_down.toLocalized())
             return false
         default:
             return false
@@ -73,17 +70,6 @@ class DataMapper: UIViewController {
     
     func createUser(user: User, completion: @escaping DataMapperCompletion) {
         connection.post(params:user.params, encode: JSONEncoding.default) {
-            httpStatus, json, _, error in
-            if self.checkHttpStatus(httpCode: httpStatus) {
-                completion(nil, nil)
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-    
-    func updateUser(user: User,completion: @escaping DataMapperCompletion) {
-        connection.put(params: user.params, encode: JSONEncoding.default) {
             httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus) {
                 completion(nil, nil)

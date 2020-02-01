@@ -14,7 +14,6 @@ class UsersViewCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userBirthdate: UILabel!
     
-    
     override func prepareForReuse() {
         userID.text = nil
         userName.text = nil

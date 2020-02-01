@@ -24,7 +24,7 @@ extension UIViewController {
     //Show a basic alert
     func showAlert(alertText : String, alertMessage : String) {
         let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: got_it.toLocalized(), style: UIAlertAction.Style.default, handler: nil))
         //Add more actions as you see fit
         self.present(alert, animated: true, completion: nil)
     }
@@ -53,5 +53,14 @@ extension String {
 }
 
 let something_wrong = "message_principal_error"
-let message_retired = "message_retired"
+let unknoun = "unknoun"
 
+let users_title = "users"
+let got_it = "got_it"
+
+let connection_lost = "connection_lost"
+let check_wifi = "check_wifi"
+
+let unauthorized = "unauthorized"
+let not_found_error = "not_found_error"
+let network_down = "network_down"

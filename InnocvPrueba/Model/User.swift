@@ -16,15 +16,16 @@ struct User: Mapping {
     var id: Int? = 0
     var name: String? = ""
     var birthdate: String? = ""
+    
     var birthdateFormatted: String {
         if let dateString = self.birthdate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-ddEhh:mm:ss"
             let dateObj = dateFormatter.date(from: dateString)
-            if dateObj == nil { return "unknoun"}
+            if dateObj == nil { return unknoun.toLocalized()}
             return dateFormatter.string(from: dateObj!)
         }
-        return "unknow"
+        return unknoun.toLocalized()
     }
     
     init(id: Int?, name: String?, birthdate: String?) {

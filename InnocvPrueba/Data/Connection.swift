@@ -17,7 +17,6 @@ typealias ConnectionCompletion = (_ httpStatus: Int, _ response: JSON?, _ respon
 protocol RestManager {
     var httpHeaders: HTTPHeaders? { get set }
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
-    func put(params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     func delete(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     func post(params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
@@ -71,10 +70,6 @@ class Connection: RestManager {
     
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .get, params: params, encode: encode,  completion: completion)
-    }
-    
-    func put(params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
-        connect(to: completeUrlString(forEndpoint: "/User/"), method: .put, params: params, encode: encode,  completion: completion)
     }
     
     func isInternetAvailable() -> Bool {

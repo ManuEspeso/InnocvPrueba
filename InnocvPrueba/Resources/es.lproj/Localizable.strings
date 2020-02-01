@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  InnocvPrueba
+
+  Created by Manu Espeso on 01/02/2020.
+  Copyright © 2020 Manu Espeso. All rights reserved.
+*/
+"message_principal_error" = "Algo ha fallado!";
+"unknoun" = "Desconocido";
+
+"users" = "Usuarios";
+"got_it" = "Entendido";
+
+"connection_lost" = "Conexion Perdida";
+"check_wifi" = "Revisa tu conexion a internet";
+
+"unauthorized" = "No estas autorizado a esta accion";
+"not_found_error" = "Error desconocido";
+"network_down" = "Servidores caidos";

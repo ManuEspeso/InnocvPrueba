@@ -14,11 +14,12 @@ protocol UsersListView: class {
     func goToUsersDetailPage(userSelected: User)
 }
 
-class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UsersListView {
-    
+class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating ,UsersListView {
+        
     @IBOutlet weak var mTableView: UITableView!
     
     var presenter = UsersListPresenterDefault()
+    var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,25 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         
         presenter.onViewdidLoad(view: self)
         
-        navigationItem.title = "Users"
+        navigationItem.title = users_title.toLocalized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewUser))
+        
+        setupSearchBar()
     }
     override func viewWillAppear(_ animated: Bool) {
         presenter.viewWillAppear()
+    }
+    
+    func setupSearchBar() {
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.searchBar.sizeToFit()
+
+            mTableView.tableHeaderView = controller.searchBar
+
+            return controller
+        })()
     }
     
     func loadData() {
@@ -59,11 +74,11 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         (cell as? UsersViewCell)?.update(data: user)
         let view = UIView()
         view.frame = cell.contentView.bounds.insetBy(dx: 4 , dy: 4)
-        view.layer.borderWidth = 2
+        view.layer.borderWidth = 2.5
         view.layer.cornerRadius = 5
         view.layer.shadowRadius = 4
-        view.layer.shadowOpacity = 0.5
-        view.layer.borderColor = UIColor(red: 0, green: 0.3, blue: 0.4, alpha: 1).cgColor
+        view.layer.shadowOpacity = 0.9
+        view.layer.borderColor = UIColor(red: 0, green: 0.3, blue: 0.5, alpha: 1).cgColor
         cell.contentView.addSubview(view)
         
         return cell
@@ -71,6 +86,12 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.selectUser(at: indexPath.row)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        print(searchPredicate)
     }
     
     func goToUsersDetailPage(userSelected: User) {

@@ -37,7 +37,7 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
             dataMapper.getAllUsers(){
                 result, error in
                 if error != nil {
-                    self.showAlert(alertText: "Something Wrong", alertMessage: error as! String)
+                    self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: error as! String)
                 }
                 if let result = result as? [User] {
                     self.users = result
@@ -45,7 +45,7 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
                 }
             }
         } else {
-            self.showAlert(alertText: "Connection Lost", alertMessage: "Check your wifi connection")
+            self.showAlert(alertText: connection_lost.toLocalized(), alertMessage: check_wifi.toLocalized())
         }
     }
     
@@ -60,17 +60,5 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
     func selectUser(at index: Int) {
         let user = users[index]
         self.usersView.goToUsersDetailPage(userSelected: user)
-        /*dataMapper.getUser(userId: user.id!) {result, error in
-            print("entro")
-            if error != nil {
-                self.showAlert(alertText: "Something Wrong", alertMessage: error as! String)
-            }
-            if let result = result as? [User] {
-                print("va bien")
-                self.userDetail = result
-                print(self.userDetail)
-                //self.usersView.loadData()
-            }
-        }*/
     }
 }
