@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,9 +12,28 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="innocv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-0b-COs">
+                                <rect key="frame" x="50" y="394.66666666666669" width="275" height="23"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manuel Espeso Martin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5X-3u-Ea4">
+                                <rect key="frame" x="90" y="744.66666666666663" width="195" height="33.333333333333371"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71541434526443481" green="0.4243047833442688" blue="0.52123385667800903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vg6-0b-COs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HFI-Hd-lYt"/>
+                            <constraint firstItem="L5X-3u-Ea4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cEX-r9-yMK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vg6-0b-COs" secondAttribute="trailing" constant="50" id="hcx-I6-0li"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="L5X-3u-Ea4" secondAttribute="bottom" id="kur-h6-pJK"/>
+                            <constraint firstItem="Vg6-0b-COs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="qGL-ln-aBd"/>
+                            <constraint firstItem="Vg6-0b-COs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qhz-0o-Wjx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -23,4 +42,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="innocv_logo" width="307" height="23"/>
+    </resources>
 </document>

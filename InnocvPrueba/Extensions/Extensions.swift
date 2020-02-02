@@ -8,18 +8,6 @@
 
 import UIKit
 
-extension Date {
-    
-    func toFormattedString(with format: String = "eeee dd 'de' MMMM 'de' yyyy", locale: String = "es_ES") -> String {
-        let mDateFormatted = DateFormatter()
-        
-        mDateFormatted.locale = Locale(identifier: locale)
-        mDateFormatted.dateFormat = format
-        
-        return mDateFormatted.string(from: self)
-    }
-}
-
 extension UIViewController {
     //Show a basic alert
     func showAlert(alertText : String, alertMessage : String) {
@@ -80,3 +68,7 @@ let not_found_error = "not_found_error"
 let network_down = "network_down"
 
 let date_format = "date_format"
+
+let cancel = "cancel"
+let delete_user = "delete_user"
+let drop_user = "drop_user"

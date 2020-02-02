@@ -56,6 +56,10 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         presenter.addUserButtonTap()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 135
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfUsers
     }
@@ -76,6 +80,29 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.selectUser(at: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: delete_user.toLocalized()) {
+            (contextualAction, view, actionPerformed: @escaping (Bool) -> ()) in
+            
+            let alert = UIAlertController(title: delete_user.toLocalized(), message: drop_user.toLocalized(), preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: cancel.toLocalized(), style: .cancel, handler: { (alertAction) in actionPerformed(false)
+            }))
+            alert.addAction(UIAlertAction(title: delete_user.toLocalized(), style: .destructive, handler: { (alertAction) in
+                self.presenter.dropUser(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.reloadData()
+            }))
+            self.present(alert, animated: true)
+        }
+        return UISwipeActionsConfiguration(actions: [delete])
     }
     
     func updateSearchResults(for searchController: UISearchController) {

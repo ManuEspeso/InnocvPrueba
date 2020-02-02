@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pap-no-dUc">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UsersViewCell" rowHeight="135" id="C75-a8-27F" customClass="UsersViewCell" customModule="InnocvPrueba" customModuleProvider="target">
@@ -91,9 +91,9 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.71541434530000003" green="0.42430478329999999" blue="0.5212338567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pap-no-dUc" secondAttribute="bottom" id="4Xq-cp-wIr"/>
+                            <constraint firstAttribute="bottom" secondItem="Pap-no-dUc" secondAttribute="bottom" id="UxN-3X-YBV"/>
                             <constraint firstItem="Pap-no-dUc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="agt-JQ-utV"/>
                             <constraint firstItem="Pap-no-dUc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bis-B3-DXu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pap-no-dUc" secondAttribute="trailing" id="zIQ-e9-W9A"/>
@@ -118,19 +118,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96t-fe-pHs">
-                                <rect key="frame" x="177" y="194" width="21" height="25.666666666666657"/>
+                                <rect key="frame" x="178" y="194" width="19.333333333333343" height="23.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REO-x5-iS5">
-                                <rect key="frame" x="159.33333333333334" y="269.66666666666669" width="56.666666666666657" height="25"/>
+                                <rect key="frame" x="161" y="267.33333333333331" width="53" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthdate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tq-X0-kzP">
-                                <rect key="frame" x="142" y="344.66666666666669" width="91" height="25.333333333333314"/>
+                                <rect key="frame" x="146.66666666666666" y="340.66666666666669" width="82" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -166,6 +166,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bti-Qy-l8e">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.71541434530000003" green="0.42430478329999999" blue="0.5212338567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.71541434530000003" green="0.42430478329999999" blue="0.5212338567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

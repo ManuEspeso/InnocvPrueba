@@ -19,3 +19,7 @@
 "network_down" = "Servidores caidos";
 
 "date_format" = "d 'de' MMMM 'de' yyyy, EEEE";
+
+"cancel" = "Cancelar";
+"delete_user" = "Eliminar";
+"drop_user" = "Estas seguro que deseas eliminar este usuario?";

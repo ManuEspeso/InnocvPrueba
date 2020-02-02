@@ -19,3 +19,7 @@
 "network_down" = "Network Down";
 
 "date_format" = "d 'of' MMMM 'of' yyyy, EEEE";
+
+"cancel" = "Cancel";
+"delete_user" = "Delete";
+"drop_user" = "Sure that you want to delete this user?";

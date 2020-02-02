@@ -15,6 +15,7 @@ protocol UsersListPresenter {
     func addUserButtonTap()
     func user(at index: Int) -> User
     func selectUser(at index: Int)
+    func dropUser(at index: Int)
     func searchUser(userID: String)
 }
 
@@ -62,6 +63,21 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
     func selectUser(at index: Int) {
         let user = users[index]
         self.usersView.goToUsersDetailPage(userSelected: user)
+    }
+    
+    func dropUser(at index: Int) {
+        let user = users[index]
+        users.remove(at: index)
+        
+        if dataMapper.checkInternet() {
+            dataMapper.deleteUser(userId: user.id!){
+                result, error in
+            }
+        } else {
+            self.showAlert(alertText: connection_lost.toLocalized(), alertMessage: check_wifi.toLocalized())
+        }
+        
+        
     }
     
     func searchUser(userID: String) {
