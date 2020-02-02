@@ -15,11 +15,13 @@ protocol UsersListPresenter {
     func addUserButtonTap()
     func user(at index: Int) -> User
     func selectUser(at index: Int)
+    func searchUser(userID: String)
 }
 
 class UsersListPresenterDefault: UIViewController, UsersListPresenter {
     
     var users: [User] = []
+    var user: User? = nil
     var userDetail: [User] = []
     let dataMapper = DataMapper()
     private weak var usersView: UsersListView!
@@ -60,5 +62,24 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
     func selectUser(at index: Int) {
         let user = users[index]
         self.usersView.goToUsersDetailPage(userSelected: user)
+    }
+    
+    func searchUser(userID: String) {
+        if dataMapper.checkInternet() {
+            dataMapper.getUser(userId: userID){
+                result, error in
+                if error != nil {
+                    self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: error as! String)
+                }
+                if let result = result as? User {
+                    self.user = result
+                    self.users.removeAll()
+                    self.users.append(self.user!)
+                    self.usersView.loadData()
+                }
+            }
+        } else {
+            self.showAlert(alertText: connection_lost.toLocalized(), alertMessage: check_wifi.toLocalized())
+        }
     }
 }

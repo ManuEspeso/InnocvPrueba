@@ -17,3 +17,5 @@
 "unauthorized" = "No estas autorizado a esta accion";
 "not_found_error" = "Error desconocido";
 "network_down" = "Servidores caidos";
+
+"date_format" = "d 'de' MMMM 'de' yyyy, EEEE";

@@ -44,6 +44,20 @@ extension Mapping {
     }
 }
 
+extension UIView {
+    func setUpTableViewCell() -> UIView {
+        let view = UIView()
+        
+        view.layer.borderWidth = 2.5
+        view.layer.cornerRadius = 5
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.9
+        view.layer.borderColor = UIColor(red: 0, green: 0.3, blue: 0.5, alpha: 1).cgColor
+        
+        return view
+    }
+}
+
 extension String {
     
     func toLocalized() -> String {
@@ -64,3 +78,5 @@ let check_wifi = "check_wifi"
 let unauthorized = "unauthorized"
 let not_found_error = "not_found_error"
 let network_down = "network_down"
+
+let date_format = "date_format"

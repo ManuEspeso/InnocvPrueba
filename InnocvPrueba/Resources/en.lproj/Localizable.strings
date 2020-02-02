@@ -17,3 +17,5 @@
 "unauthorized" = "Unauthorized";
 "not_found_error" = "Error not found";
 "network_down" = "Network Down";
+
+"date_format" = "d 'of' MMMM 'of' yyyy, EEEE";

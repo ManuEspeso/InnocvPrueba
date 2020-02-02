@@ -5,8 +5,6 @@
 //  Created by Manu Espeso on 31/01/2020.
 //  Copyright © 2020 Manu Espeso. All rights reserved.
 //
-
-
 import UIKit
 
 protocol UsersListView: class {
@@ -14,8 +12,8 @@ protocol UsersListView: class {
     func goToUsersDetailPage(userSelected: User)
 }
 
-class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating ,UsersListView {
-        
+class UsersListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UsersListView {
+    
     @IBOutlet weak var mTableView: UITableView!
     
     var presenter = UsersListPresenterDefault()
@@ -43,9 +41,9 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
             controller.searchBar.sizeToFit()
-
+            
             mTableView.tableHeaderView = controller.searchBar
-
+            
             return controller
         })()
     }
@@ -58,10 +56,6 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         presenter.addUserButtonTap()
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfUsers
     }
@@ -72,13 +66,9 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
         let user = presenter.user(at: indexPath.row)
         
         (cell as? UsersViewCell)?.update(data: user)
-        let view = UIView()
+        var view = UIView()
+        view = view.setUpTableViewCell()
         view.frame = cell.contentView.bounds.insetBy(dx: 4 , dy: 4)
-        view.layer.borderWidth = 2.5
-        view.layer.cornerRadius = 5
-        view.layer.shadowRadius = 4
-        view.layer.shadowOpacity = 0.9
-        view.layer.borderColor = UIColor(red: 0, green: 0.3, blue: 0.5, alpha: 1).cgColor
         cell.contentView.addSubview(view)
         
         return cell
@@ -89,9 +79,12 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        //
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        print(searchPredicate)
+        let searchUserText = searchController.searchBar.text!
+        if searchUserText.count == 0 {
+            presenter.viewWillAppear()
+        } else {
+            presenter.searchUser(userID: searchUserText)
+        }
     }
     
     func goToUsersDetailPage(userSelected: User) {
@@ -99,7 +92,6 @@ class UsersListViewController: UIViewController, UITableViewDataSource, UITableV
             
             controller.modalTransitionStyle = .flipHorizontal
             controller.modalPresentationStyle = .popover
-            
             controller.set(data: userSelected)
             
             present(controller, animated: true, completion: nil)

@@ -20,8 +20,9 @@ struct User: Mapping {
     var birthdateFormatted: String {
         if let dateString = self.birthdate {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-ddEhh:mm:ss"
+            dateFormatter.dateFormat = "yyy-MM-dd'T'HH:mm:ss"
             let dateObj = dateFormatter.date(from: dateString)
+            dateFormatter.dateFormat = date_format.toLocalized() /*"EEEE d 'of' MMMM 'of' yyyy"*/
             if dateObj == nil { return unknoun.toLocalized()}
             return dateFormatter.string(from: dateObj!)
         }

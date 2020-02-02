@@ -39,7 +39,7 @@ class DataMapper: UIViewController {
         return conexion
     }
     
-    func getUser(userId: Int, completion: @escaping DataMapperCompletion) {
+    func getUser(userId: String, completion: @escaping DataMapperCompletion) {
         connection.get("/User/\(userId)", params: ["id": userId], encode: URLEncoding.default) {
             httpStatus, json, _, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
