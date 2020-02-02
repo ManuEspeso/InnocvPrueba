@@ -23,3 +23,12 @@
 "cancel" = "Cancel";
 "delete_user" = "Delete";
 "drop_user" = "Sure that you want to delete this user?";
+
+"create_user" = "Create User";
+"name" = "Name";
+"birthdate" = "Birthdate";
+
+"empty_file" = "Empty File";
+"empty_file_message" = "You can create an user with any empty file";
+
+"pull_refresh" = "Pull to refresh";

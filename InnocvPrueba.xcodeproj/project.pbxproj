@@ -24,6 +24,8 @@
 		DDA44DEC23E50BF8009D72D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA44DEB23E50BF8009D72D2 /* User.swift */; };
 		DDA44DEF23E50DF8009D72D2 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA44DEE23E50DF8009D72D2 /* DataMapper.swift */; };
 		DDA44DF123E50ECF009D72D2 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA44DF023E50ECF009D72D2 /* Connection.swift */; };
+		DDAD0D9D23E738BE00F1548B /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD0D9C23E738BE00F1548B /* PopUpViewController.swift */; };
+		DDAD0DA123E76C1B00F1548B /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD0DA023E76C1B00F1548B /* UIViewX.swift */; };
 		DDC6F8ED23E5A22D00169EA7 /* UsersListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6F8EC23E5A22D00169EA7 /* UsersListPresenter.swift */; };
 		EDF28FD6B96DE792EF1F8FD8 /* Pods_InnocvPruebaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B5491C4A150D2E14310676 /* Pods_InnocvPruebaUITests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		DDA44DEB23E50BF8009D72D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DDA44DEE23E50DF8009D72D2 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		DDA44DF023E50ECF009D72D2 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		DDAD0D9C23E738BE00F1548B /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		DDAD0DA023E76C1B00F1548B /* UIViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 		DDC6F8EC23E5A22D00169EA7 /* UsersListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListPresenter.swift; sourceTree = "<group>"; };
 		E75EBE03AC0AFB0FBBFE4C28 /* Pods-InnocvPruebaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocvPruebaTests.release.xcconfig"; path = "Target Support Files/Pods-InnocvPruebaTests/Pods-InnocvPruebaTests.release.xcconfig"; sourceTree = "<group>"; };
 		FEAC0B262838D16B322E4EA1 /* Pods-InnocvPrueba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocvPrueba.debug.xcconfig"; path = "Target Support Files/Pods-InnocvPrueba/Pods-InnocvPrueba.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				DDA44DDD23E50A53009D72D2 /* App */,
 				DDA44DDE23E50A5D009D72D2 /* Resources */,
 				DDA44DE823E50B82009D72D2 /* Extensions */,
+				DDAD0D9F23E76BF900F1548B /* DesignableX */,
 				DDA44DE123E50A7F009D72D2 /* Model */,
 				DDA44DED23E50DE5009D72D2 /* Data */,
 				DDA44DE023E50A6C009D72D2 /* Modules */,
@@ -238,6 +243,7 @@
 				DDC6F8EC23E5A22D00169EA7 /* UsersListPresenter.swift */,
 				DDA44DE323E50B22009D72D2 /* Controller */,
 				DDA44DE423E50B29009D72D2 /* Cell */,
+				DDAD0D9B23E7389F00F1548B /* PopUp */,
 			);
 			path = UsersList;
 			sourceTree = "<group>";
@@ -270,10 +276,26 @@
 		DDA44DED23E50DE5009D72D2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				DDA44DEE23E50DF8009D72D2 /* DataMapper.swift */,
 				DDA44DF023E50ECF009D72D2 /* Connection.swift */,
+				DDA44DEE23E50DF8009D72D2 /* DataMapper.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		DDAD0D9B23E7389F00F1548B /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				DDAD0D9C23E738BE00F1548B /* PopUpViewController.swift */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		DDAD0D9F23E76BF900F1548B /* DesignableX */ = {
+			isa = PBXGroup;
+			children = (
+				DDAD0DA023E76C1B00F1548B /* UIViewX.swift */,
+			);
+			path = DesignableX;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,7 +524,9 @@
 				DD095DA423E5D048009AFACB /* UsersListDetailViewController.swift in Sources */,
 				DDA44DEA23E50BCE009D72D2 /* Extensions.swift in Sources */,
 				DDA44DB223E509AA009D72D2 /* UsersListViewController.swift in Sources */,
+				DDAD0D9D23E738BE00F1548B /* PopUpViewController.swift in Sources */,
 				DDA44DEF23E50DF8009D72D2 /* DataMapper.swift in Sources */,
+				DDAD0DA123E76C1B00F1548B /* UIViewX.swift in Sources */,
 				DDA44DF123E50ECF009D72D2 /* Connection.swift in Sources */,
 				DDA44DEC23E50BF8009D72D2 /* User.swift in Sources */,
 				DDA44DAE23E509AA009D72D2 /* AppDelegate.swift in Sources */,

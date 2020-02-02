@@ -28,17 +28,15 @@ class Connection: RestManager {
     let baseUrlString = "https://hello-world.innocv.com/api"
     let sessionManager: SessionManager
     var httpHeaders: HTTPHeaders?
-    
+    //Some defaults configurations for inizialize Alamofire propertly
     init() {
-        var headers = Alamofire.SessionManager.defaultHTTPHeaders
-        headers["API-Version"] = "1.0"
-        headers["Authorization"] = ""
+        let headers = Alamofire.SessionManager.defaultHTTPHeaders
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 10
+        configuration.timeoutIntervalForRequest = 5
         configuration.httpAdditionalHeaders = headers
         sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
-    
+    //Important func who realise the api call with the params who recieved by the constructor depending on with case is call it. if the api call its ok the completion return some values like the json who callback the api, the error if something`s wrong, header...
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
         sessionManager.request(url, method: method, parameters: params,encoding: encode, headers: httpHeaders).responseData {
             response in
@@ -54,7 +52,7 @@ class Connection: RestManager {
             completion(httpCode, json, responseHeaders, response.error)
         }
     }
-    
+    //Configure the complete url for the api request call depends who call it
     func completeUrlString(forEndpoint endpoint: String) -> String {
         if endpoint.contains("http") { return endpoint }
         return baseUrlString + endpoint
@@ -71,7 +69,7 @@ class Connection: RestManager {
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .get, params: params, encode: encode,  completion: completion)
     }
-    
+    //Check the internet from the user movile. It serves to do or not to do an internet request call and prevent possible many internet errors
     func isInternetAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))

@@ -23,3 +23,12 @@
 "cancel" = "Cancelar";
 "delete_user" = "Eliminar";
 "drop_user" = "Estas seguro que deseas eliminar este usuario?";
+
+"create_user" = "Crear Usuario";
+"name" = "Nombre";
+"birthdate" = "Cumpleaños";
+
+"empty_file" = "Campo Vacio";
+"empty_file_message" = "No puedes crear un usuario con un campo vacio";
+
+"pull_refresh" = "Arrastra para refrescar";

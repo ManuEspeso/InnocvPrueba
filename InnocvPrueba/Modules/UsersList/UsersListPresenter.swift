@@ -12,7 +12,7 @@ import UIKit
 protocol UsersListPresenter {
     var numberOfUsers: Int { get }
     func viewWillAppear()
-    func addUserButtonTap()
+    func createUser(name: String, birthdate: String)
     func user(at index: Int) -> User
     func selectUser(at index: Int)
     func dropUser(at index: Int)
@@ -34,13 +34,13 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
     var numberOfUsers: Int {
         return users.count
     }
-    
+    //Get all the users from the innocv api and if the results is not null set it the array and callback to the ViewController, in case if something`s wrong a alert will display for give some information to the user
     func viewWillAppear() {
         if dataMapper.checkInternet() {
             dataMapper.getAllUsers(){
                 result, error in
                 if error != nil {
-                    self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: error as! String)
+                    self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: something_wrong.toLocalized())
                 }
                 if let result = result as? [User] {
                     self.users = result
@@ -51,35 +51,40 @@ class UsersListPresenterDefault: UIViewController, UsersListPresenter {
             self.showAlert(alertText: connection_lost.toLocalized(), alertMessage: check_wifi.toLocalized())
         }
     }
-    
-    func addUserButtonTap() {
-        print("boton mas pulsado")
+    //Get the name and birthdate from the pupUp view, added in to modal User and create this user, in case if something`s wrong a alert will display for give some information to the user
+    func createUser(name: String, birthdate: String) {
+        let user = User(name: name, birthdate: birthdate)
+        print(user)
+        dataMapper.createUser(user: user){
+            result, error in
+            if error == nil {
+                self.showAlert(alertText: something_wrong.toLocalized(), alertMessage: something_wrong.toLocalized())
+            }
+        }
     }
-    
+    //Give specific user index
     func user(at index: Int) -> User {
         return users[index]
     }
-    
+    //Get specific user selected and send it in to the UsersDetailView
     func selectUser(at index: Int) {
         let user = users[index]
         self.usersView.goToUsersDetailPage(userSelected: user)
     }
-    
+    //Get specific user selected, remove it from the array and later remove it calling api with his id
     func dropUser(at index: Int) {
         let user = users[index]
         users.remove(at: index)
         
         if dataMapper.checkInternet() {
-            dataMapper.deleteUser(userId: user.id!){
+            dataMapper.deleteUser(userId: user.id){
                 result, error in
             }
         } else {
             self.showAlert(alertText: connection_lost.toLocalized(), alertMessage: check_wifi.toLocalized())
         }
-        
-        
     }
-    
+    //Call innocv api with userId and the api callback the specific user who is send it to the tableview for visualize in the cell
     func searchUser(userID: String) {
         if dataMapper.checkInternet() {
             dataMapper.getUser(userId: userID){

@@ -13,7 +13,7 @@ protocol Mapping: Codable {
 }
 
 struct User: Mapping {
-    var id: Int? = 0
+    var id: Int = 0
     var name: String? = ""
     var birthdate: String? = ""
     
@@ -29,16 +29,21 @@ struct User: Mapping {
         return unknoun.toLocalized()
     }
     
-    init(id: Int?, name: String?, birthdate: String?) {
-        self.id = id
+    init(name: String?, birthdate: String?) {
         self.name = name
         self.birthdate = birthdate
     }
     
+    init(id: Int, name: String?, birthdate: String?) {
+        self.id = id
+        self.name = name
+        self.birthdate = birthdate
+    }
+    //Variable for set user datas when the users wants to add an user
     var params: [String: Any] {
         return ["name":name ?? "nil",
                 "birthdate": birthdate ?? "nil",
-                "id":id ?? 0
+                "id":id
         ]
     }
 }
